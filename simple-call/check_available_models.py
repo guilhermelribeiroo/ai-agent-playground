@@ -3,10 +3,15 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-print("Modelos que você pode usar para gerar conteúdo:")
+print(f"{'MODEL NAME':<30} | {'Supported Actions'}")
+print("-" * 80)
+
+# List the models
 for model in client.models.list():
-    if 'generateContent' in model.supported_actions:
-        # O nome que você deve usar é o que aparece após 'models/'
-        print(f"- {model.name.replace('models/', '')}")
+    # The supported actions indicate whether the model is suitable for chat (generateContent), 
+    # search (embedContent), etc.
+    actions = ", ".join(model.supported_actions)
+    print(f"{model.name:<30} | {actions}")

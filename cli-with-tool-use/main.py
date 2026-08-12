@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-MODEL_ID = "gemini-flash-latest"
+MODEL_ID = "gemini-flash-lite-latest"
 
 def start_new_chat():
     print(f"\n--- Starting a new session ({MODEL_ID}) ---")
